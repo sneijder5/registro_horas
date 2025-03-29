@@ -1,12 +1,10 @@
 export async function calculateHours(data) {
-  const response = await fetch('https://thingproxy.freeboard.io/fetch/https://falconcloud.co/site_srv10_ph/site/api/qserv.php/13465-770721', {
+  const response = await fetch('/api', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      attendanceIn: data.attendanceIn,
-      attendanceOut: data.attendanceOut,
-      concepts: data.concepts
-    })
+    body: JSON.stringify(data)
   });
+  
   return response.ok ? await response.json() : {};
+  
 }
